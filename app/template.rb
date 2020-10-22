@@ -17,7 +17,7 @@ directory "app/controllers/admin", "app/controllers/admin"
 copy_file "app/helpers/application_helper.rb", force: true
 copy_file "app/helpers/javascript_helper.rb"
 copy_file "app/helpers/layout_helper.rb"
-copy_file "app/helpers/pagination.rb"
+copy_file "app/helpers/pagination_helper.rb"
 copy_file "app/helpers/retina_image_helper.rb"
 
 directory "app/views/admin", "app/views/admin"
