@@ -53,9 +53,6 @@ group :development do
   gem "letter_opener"
   gem "listen"<%= gemfile_requirement("listen") %>
   gem "overcommit", ">= 0.37.0", require: false
-<% if gemfile_requirement("puma") -%>
-  gem "puma"<%= gemfile_requirement("puma") %>
-<% end -%>
   gem "rack-livereload"
   gem "rubocop", ">= 0.70.0", require: false
   gem "rubocop-performance", require: false
