@@ -8,11 +8,6 @@ def apply_template!
 
   template "Gemfile.tt", force: true
 
-  if apply_capistrano?
-    template "DEPLOYMENT.md.tt"
-    template "PROVISIONING.md.tt"
-  end
-
   template "README.md.tt", force: true
   remove_file "README.rdoc"
 
@@ -23,7 +18,6 @@ def apply_template!
   template "ruby-version.tt", ".ruby-version", force: true
   copy_file "simplecov", ".simplecov"
 
-  copy_file "Capfile" if apply_capistrano?
   copy_file "Guardfile"
   copy_file "Procfile"
 
@@ -50,7 +44,6 @@ def apply_template!
     annotate brakeman bundler bundler-audit guard rubocop sidekiq
     terminal-notifier
   ]
-  binstubs.push("capistrano", "unicorn") if apply_capistrano?
   run_with_clean_bundler_env "bundle binstubs #{binstubs.join(' ')} --force"
 
   template "rubocop.yml.tt", ".rubocop.yml"
@@ -59,7 +52,6 @@ def apply_template!
   unless any_local_git_commits?
     git add: "-A ."
     git commit: "-n -m 'Set up project'"
-    git checkout: "-b development" if apply_capistrano?
     if git_repo_specified?
       git remote: "add origin #{git_repo_url.shellescape}"
       git push: "-u origin --all"
@@ -177,13 +169,6 @@ end
 
 def apply_bootstrap?
   ask_with_default("Use Bootstrap gems, layouts, views, etc.?", :blue, "no")\
-    =~ /^y(es)?/i
-end
-
-def apply_capistrano?
-  return @apply_capistrano if defined?(@apply_capistrano)
-  @apply_capistrano = \
-    ask_with_default("Use Capistrano for deployment?", :blue, "no") \
     =~ /^y(es)?/i
 end
 
