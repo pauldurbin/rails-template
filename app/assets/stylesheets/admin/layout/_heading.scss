@@ -1,0 +1,20 @@
+.heading {
+  border-radius: 0;
+  padding: 0.75rem 0;
+  margin-bottom: 1em;
+  background-color: $blue-white;
+  border-bottom: 1px solid $color-primary-2;
+
+  h2 {
+    font-size: 20px;
+    line-height: 20px;
+    margin: 0.75rem 0;
+    padding: 0;
+    font-weight: 400;
+
+    small {
+      font-size: 70%;
+      display: block;
+    }
+  }
+}

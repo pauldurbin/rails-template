@@ -1,0 +1,14 @@
+<%= render 'layouts/shared/admin/heading', heading: 'Pages', small: 'All', create_link: true %>
+
+<div class="row">
+  <div class="col-12">
+    <%- if pages.blank? %>
+    <h5 class="text-center oops">
+      Oops!
+      <small class="text-muted">There are no pages to display, why not <%= link_to "create one", new_admin_page_path %>?</small>
+    </h5>
+    <%- else %>
+    <%= render_sortable(pages, { name_method: :menu_title, sort_url: sort_admin_pages_url, max_levels: 7, controls_partial: 'admin/sortable/controls' }) %>
+    <%- end %>
+  </div>
+</div>

@@ -30,6 +30,7 @@ def apply_template!
   apply "doc/template.rb"
   apply "lib/template.rb"
   apply "test/template.rb"
+  apply "vendor/template.rb"
 
   apply "variants/bootstrap/template.rb" if apply_bootstrap?
 

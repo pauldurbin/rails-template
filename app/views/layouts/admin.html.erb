@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Content Management :: by TheDoor.</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'admin', media: 'all' %>
+    <%= javascript_include_tag 'admin' %>
+
+    <%= stylesheet_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
+
+    <%= tag.meta name: "direct-upload-url", content: rails_direct_uploads_path %>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+          crossorigin="anonymous">
+  </head>
+
+  <body>
+    <%= render 'layouts/shared/admin/top-navigation' %>
+    <%= render 'layouts/shared/admin/side-navigation' %>
+
+    <main role="main" class="container-fluid">
+      <%= yield %>
+    </main>
+
+    <%= render 'layouts/shared/modal' %>
+  </body>
+</html>

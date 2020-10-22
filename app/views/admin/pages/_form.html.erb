@@ -1,0 +1,11 @@
+<%= field_set_tag "Page details" do %>
+  <%= f.input :ancestry, label: 'Parent', collection: pages, label_method: :menu_title, value_method: :id %>
+  <%= f.input :menu_title %>
+  <%= f.input :slug %>
+<%- end %>
+
+<%- unless page.new_record? %>
+  <%= field_set_tag "Shelves" do %>
+    <%= render 'admin/pages/shelves', shelves: page.shelves %>
+  <%- end %>
+<%- end %>

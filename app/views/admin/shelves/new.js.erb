@@ -1,0 +1,3 @@
+$('.modal .modal-header .modal-title').html("Shelves <small>New</small>");
+$('.modal .modal-body').html("<%= j render 'admin/shelves/shared/new', shelf: shelf, templates: templates %>");
+$('.modal-placeholder').modal({ backdrop: 'static', keyboard: false });

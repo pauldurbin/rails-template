@@ -1,0 +1,14 @@
+<div class="sortable" data-klass="shelf" data-url="<%= sort_admin_sortable_index_path %>">
+  <%= render partial: 'admin/shelves/shelf', collection: shelves %>
+</div>
+
+<div class='add-content'>
+  <%= link_to select_or_create_admin_page_shelves_path(page_id: params[:id]),
+              remote: true,
+              class: 'full-width padding dashed text-center',
+              data: {
+                'display-in-modal': true
+              } do %>
+    <i class='fa fa-plus-circle'></i> Add shelf
+  <%- end %>
+</div>

@@ -1,0 +1,22 @@
+<ul class="sortable level-<%= level %>" data-klass='page'>
+  <%- pages.each do |element| %>
+  <li class="<%= (element.children.count > 0) ? 'children' : '' %>" id="<%= element.id %>">
+    <%- if element.children.count > 0 %>
+      <span class="label label-info"><i class="fa fa-plus-circle"></i></span>
+    <%- else %>
+      <span class="label label-default"><i class="fa fa-file-text-o"></i></span>
+    <%- end %>
+
+    <%= element.menu_title %> (<%= element.slug %>)
+    <small>
+      <%= link_to 'Edit', edit_page_path(id: element.id) %>
+      |
+      <%= link_to 'Delete', page_path(id: element.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </small>
+
+    <%- if element.children.count > 0 %>
+      <%= render 'page', pages: element.children, level: level + 1 %>
+    <%- end %>
+  </li>
+  <%- end %>
+</ul>

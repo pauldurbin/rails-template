@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header text-center">
+    <h1>Content Management</h1>
+  </div>
+
+  <div class="card-body">
+    <%= form_tag(admin_site_selections_path) do |f| %>
+      <p class="text-center">Which site would you like to edit?</p>
+
+      <div class="form-group">
+        <%= select_tag :site_id, options_from_collection_for_select(sites, "id", "name"), include_blank: true, class: "form-control" %>
+      </div>
+
+      <%= submit_tag "Continue", class: "btn btn-block btn-primary" %>
+    <% end %>
+  </div>
+
+  <div class="card-footer">
+    <%= link_to 'Create a new site?', new_admin_site_path %>
+  </div>
+</div>

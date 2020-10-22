@@ -1,0 +1,19 @@
+<%= render 'layouts/shared/admin/heading', heading: 'Users', small: 'New' %>
+
+<ul class="nav nav-tabs ml-auto">
+  <li class="nav-item"><a class="nav-link active" href="#form" data-toggle="tab">Form</a></li>
+</ul>
+
+<div class='row'>
+  <div class="col-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= simple_form_for [:admin, user] do |f| %>
+          <%= render 'form', f: f %>
+
+          <%= f.submit 'Create', class: 'btn btn-primary' %>
+        <%- end %>
+      </div>
+    </div>
+  </div>
+</div>

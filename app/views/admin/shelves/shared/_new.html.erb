@@ -1,0 +1,25 @@
+<ul class="nav nav-tabs ml-auto">
+  <li class="nav-item active"><a class="nav-link active" href="#form-shelf" data-toggle="tab">Form</a></li>
+  <li class="nav-item"><a class="nav-link" href="#advanced-shelf" data-toggle="tab">Advanced</a></li>
+  <li class="nav-item"><a class="nav-link" href="#metafields-shelf" data-toggle="tab">Metafields</a></li>
+</ul>
+
+<div class="panel panel-form panel-default">
+  <div class="panel-body">
+    <%= simple_form_for shelf, url: admin_page_shelves_path, remote: true do |f| %>
+      <div class="tab-content">
+        <div class="tab-pane active" id="form-shelf">
+          <%= render 'form', f: f, templates: templates %>
+        </div>
+        <div class="tab-pane" id="advanced-shelf">
+          <%= render 'advanced', f: f %>
+        </div>
+        <div class="tab-pane" id="metafields-shelf">
+          <%= render 'layouts/shared/admin/metadatable', f: f %>
+        </div>
+      </div>
+
+      <%= f.submit 'Create', class: 'btn btn-primary' %>
+    <%- end %>
+  </div>
+</div>

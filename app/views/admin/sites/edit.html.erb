@@ -1,0 +1,27 @@
+<%= render 'layouts/shared/admin/heading', heading: 'Sites', small: 'Edit' %>
+
+<ul class="nav nav-tabs ml-auto">
+  <li class="nav-item"><a class="nav-link active" href="#form" data-toggle="tab">Form</a></li>
+  <li class="nav-item"><a class="nav-link" href="#metadata" data-toggle="tab">Metadata</a></li>
+</ul>
+
+<div class='row'>
+  <div class="col-12">
+    <div class="panel panel-form panel-default">
+      <div class="panel-body">
+        <%= simple_form_for [:admin, site] do |f| %>
+        <div class="tab-content">
+          <div class="tab-pane active" id="form">
+            <%= render 'form', f: f %>
+          </div>
+          <div class="tab-pane" id="metadata">
+            <%= render 'layouts/shared/admin/metadatable', f: f %>
+          </div>
+        </div>
+
+        <%= f.submit 'Update', class: 'btn btn-primary' %>
+        <%- end %>
+      </div>
+    </div>
+  </div>
+</div>

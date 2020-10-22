@@ -5,21 +5,36 @@ ruby "<%= RUBY_VERSION %>"
 
 gem "active_type", ">= 0.3.2"
 gem "autoprefixer-rails", ">= 5.0.0.1"
+gem "ancestry"
+gem "aws-sdk-s3", require: false
 gem "bcrypt"<%= gemfile_requirement("bcrypt") %>
 gem "bootsnap", ">= 1.2.0", require: false
+gem "bootstrap", ">= 4.3.1"
 gem "coffee-rails"<%= gemfile_requirement("coffee-rails") %>
+gem "devise"
 gem "dotenv-rails", ">= 2.0.0"
+gem "image_processing", "~> 1.2"
 gem "jquery-rails"<%= gemfile_requirement("jquery-rails") %>
+gem "jquery-ui-rails"
+gem "kaminari", ">= 1.2.1"
 gem "mail", ">= 2.6.3"
 gem "marco-polo"
+gem "mini_magick", "~> 4.8"
+gem "new_google_recaptcha"
+gem "owlcarousel-rails"
 gem "pg"<%= gemfile_requirement("pg") %>
 gem "pgcli-rails"
 gem "puma"<%= gemfile_requirement("puma") %>
+gem "pundit"
 gem "rack-canonical-host", "~> 0.2.3"
 gem "rails", "~> <%= Rails.version %>"
 gem "sass-rails"<%= gemfile_requirement("sass-rails") %>
 gem "sidekiq", ">= 4.2.0"
+gem "simple_form"
+gem "sortable_tree_rails"
+gem "summernote-rails"
 gem "turbolinks"<%= gemfile_requirement("turbolinks") || ', ">= 2.5.2"' %>
+gem "webpacker", "~> 5.2"
 
 group :production, :staging do
   gem "postmark-rails"
@@ -61,9 +76,10 @@ end
 
 group :test do
   gem "capybara"<%= gemfile_requirement("capybara") %>
+  gem "factory_bot_rails"
   gem "launchy"
-  gem "minitest-ci", ">= 3.3.0", require: false
   gem "mocha", ">= 1.4.0"
+  gem "rspec-rails", "~> 3.8"
   gem "shoulda-context"
   gem "shoulda-matchers", ">= 3.0.1"
   gem "webdrivers"<%= gemfile_requirement("webdrivers") %>

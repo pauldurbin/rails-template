@@ -1,0 +1,5 @@
+<%- content_for :title do %><%= page.meta_title || page.menu_title %><%- end %>
+<%- content_for :meta_keywords do %><%= page.meta_keywords %><%- end %>
+<%- content_for :meta_description do %><%= page.meta_description %><%- end %>
+
+<%= render partial: page.shelves, as: :shelf %>

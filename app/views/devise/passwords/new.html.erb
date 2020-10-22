@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-header text-center">
+    <h1>Content Management</h1>
+  </div>
+
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <p class="text-center">Forgotten your password?</p>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+
+      <%= f.submit "Send", class: "btn btn-block btn-primary" %>
+    <% end %>
+  </div>
+
+  <div class="card-footer">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

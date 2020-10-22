@@ -1,0 +1,9 @@
+<div class='<%= klass if (defined? klass) %> <%= parent_klass if defined? parent_klass %>'
+     <%- if content_item.url.present? %>data-url="<%= content_item.url %>"<%- end %>>
+  <div class="text <%= content_item.css_class %> <%= content_item.background_image.attachment.present? ? 'background-image' : '' %>"
+       style="background-image: <%= (defined? overlay) ? "#{overlay}, " : '' %> url('<%= image_url_for(content_item.background_image, w: 1200) %>')"
+       id="<%= content_item.css_id %>">
+    <%= image_tag(image_url_for(content_item.foreground_image, w: 1200), class: 'img-fluid') if content_item.foreground_image.attachment.present? %>
+    <%= content_item.html_content %>
+  </div>
+</div>

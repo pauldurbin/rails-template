@@ -1,0 +1,26 @@
+<div class="sortable_tree_wrapper">
+  <ol class="sortable_tree" data-sortable-url="<%= options[:sort_url] %>" data-max-levels="<%= (options[:max_levels] || 5) %>">
+    <%- items.each do |element| %>
+      <li id="cat_<%= element.id %>">
+        <div class="item">
+          <div class="cell left">
+            <i class="handle"></i>
+          </div>
+          <h3 class="cell left">
+            <%= image_tag(image_url_for(element.resource.file, w: 125, h: 125, fit: 'crop')) %>
+            <%= element.title %>
+          </h3>
+          <div class="cell right controls">
+            <%- if options.key? :display_controls %>
+              <small>
+                <%= link_to 'Edit', edit_admin_product_resource_product_path(product_id: element.product_id, id: element.id) %>
+                |
+                <%= link_to 'Remove', admin_product_resource_product_path(product_id: element.product_id, id: element.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </small>
+            <%- end %>
+          </div>
+        </div>
+      </li>
+    <%- end %>
+  </ol>
+</div>

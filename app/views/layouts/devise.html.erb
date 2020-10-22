@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Content Management :: by TheDoor.</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'authentication', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body class="authentication">
+    <main role="auth" class="container">
+      <div class="row">
+        <div class="col-4 offset-4">
+          <%= yield %>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

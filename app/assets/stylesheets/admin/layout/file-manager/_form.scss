@@ -1,0 +1,30 @@
+input#attachment_assets{
+  height: 150px;
+  color: #FFF;
+  text-indent: -9999px;
+  position: relative;
+
+  &.show-selected-files {
+    &:before {
+      content: attr(data-before) " files selected";
+      position: absolute;
+      top: 60%;
+      left: 0;
+      width: 100%;
+      color: $color-primary-0;
+      text-indent: 0;
+      text-align: center;
+    }
+  }
+
+  &:after {
+    content: "Click here to upload, or drag your files here!";
+    position: absolute;
+    top: calc(50% - 14px);
+    left: 0;
+    width: 100%;
+    color: $color-primary-0;
+    text-indent: 0;
+    text-align: center;
+  }
+}

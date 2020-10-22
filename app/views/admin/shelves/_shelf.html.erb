@@ -1,0 +1,51 @@
+<div class='row' id='<%= shelf.id %>'>
+  <div class='col-12'>
+    <div class='panel panel-form panel-default'>
+      <div class='panel-body'>
+        <h5>
+          <%= shelf.name %>
+          <small>
+            <span class='pull-right'>
+              <i class='fa fa-arrows-v handle' aria-hidden='true'></i>
+              |
+              <%= link_to edit_admin_page_shelf_path(page_id: params[:id], id: shelf.id),
+                          title: 'Edit page',
+                          remote: true,
+                          data: {
+                            'display-in-modal': true
+                          } do %>
+                <i class='fa fa-pencil' aria-hidden='true'></i>
+              <%- end %>
+              |
+              <%= link_to admin_page_shelf_path(page_id: params[:id], id: shelf.id),
+                          title: 'Delete page',
+                          remote: true,
+                          method: :delete,
+                          confirm: "Are you sure?" do %>
+                <i class='fa fa-trash' aria-hidden='true'></i>
+              <%- end %>
+            </span>
+            <%= shelf.template.name %>
+          </small>
+        </h5>
+
+        <div class="row sortable" data-klass="content-item" data-url="<%= sort_admin_sortable_index_path %>">
+          <%- klass = "col-#{12 / shelf.columns}" %>
+          <%= render shelf.content_items, klass: klass %>
+
+          <div class='<%= klass %> add-content'>
+            <%= link_to select_or_create_admin_page_shelf_content_items_path(page_id: shelf.page_id, shelf_id: shelf.id),
+                        remote: true,
+                        class: 'full-width padding dashed text-center',
+                        data: {
+                          'display-in-modal': true
+                        } do %>
+              <i class='fa fa-plus-circle'></i> Add item
+            <%- end %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

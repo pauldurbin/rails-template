@@ -1,0 +1,13 @@
+.btn {
+  &.btn-primary {
+    border-color: $color-primary-2;
+    background-color: $color-primary-0;
+  }
+}
+
+.add-content a {
+  margin-top: $spacing;
+  background: $white;
+  padding: $spacing;
+  border: 1px dashed $off-white;
+}

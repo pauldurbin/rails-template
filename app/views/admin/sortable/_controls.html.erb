@@ -1,0 +1,5 @@
+<small>
+  <%= link_to 'Edit', edit_admin_page_path(id: item.id) %>
+  |
+  <%= link_to 'Delete', admin_page_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+</small>

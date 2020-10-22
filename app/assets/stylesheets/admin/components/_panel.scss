@@ -1,0 +1,26 @@
+.panel {
+  &.panel-form {
+    .panel-body {
+      padding: 15px;
+      border: 1px solid #dee2e6;
+      border-top-width: 0;
+
+      .panel-body {
+        margin-top: $spacing;
+        border-top-width: 1px;
+      }
+
+      h5 {
+        margin-bottom: 0;
+      }
+
+      a {
+        color: $color-primary-0;
+
+        &.btn {
+          color: $white;
+        }
+      }
+    }
+  }
+}

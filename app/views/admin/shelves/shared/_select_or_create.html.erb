@@ -1,0 +1,14 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-sm-6 text-center'>
+      <%= link_to new_admin_page_shelf_path, remote: true, class: 'btn btn-primary' do %>
+        <i class='fa fa-plus-circle'></i> Create new
+      <%- end %>
+    </div>
+    <div class='col-sm-6 text-center'>
+      <%= link_to admin_page_shelves_path, remote: true, class: 'btn btn-primary' do %>
+        <i class='fa fa-search-plus'></i> Clone from existing
+      <%- end %>
+    </div>
+  </div>
+</div>

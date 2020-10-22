@@ -1,0 +1,15 @@
+.resource-list {
+  ul {
+    margin: 0;
+    padding: 0;
+    display: block;
+    overflow-y: auto;
+    list-style-type: none;
+    height: calc(100vh - 200px);
+
+    li {
+      display: inline-block;
+      margin: 0 5px 10px 0;
+    }
+  }
+}

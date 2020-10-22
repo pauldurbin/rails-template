@@ -1,0 +1,24 @@
+<div class="row heading">
+  <div class="col-12">
+    <%- if defined? create_link %>
+      <p class="pull-right">
+        <%- if defined? remote %>
+          <%= link_to "Create new", url_for(action: :new), remote: true, data: { 'display-in-modal': true }, class: "btn btn-primary" %>
+        <%- else %>
+          <%= link_to "Create new", url_for(action: :new), class: "btn btn-primary" %>
+        <%- end %>
+      </p>
+    <%- end %>
+    <%- if defined? export_link %>
+      <p class="pull-right">
+        <%= link_to "Export as CSV", url_for(format: :csv), class: "btn btn-primary" %>
+      </p>
+    <%- end %>
+    <h2>
+      <%= heading.html_safe %>
+      <%- if defined? small %>
+        <small><%= small.html_safe %></small>
+      <%- end %>
+    </h2>
+  </div>
+</div>

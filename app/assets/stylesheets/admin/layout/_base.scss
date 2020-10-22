@@ -1,0 +1,31 @@
+body, html {
+  height: 100%;
+}
+
+body {
+  height: calc(100% - #{$top-navigation-height});
+}
+
+body.nav-collapse {
+  main.container-fluid {
+    margin-left: $sidebar-collapse-width;
+    width: calc(100% - #{$sidebar-collapse-width});
+  }
+}
+
+main.container-fluid {
+  margin-left: $sidebar-collapse-width;
+  width: calc(100% - #{$sidebar-collapse-width});
+  min-height: calc(100% - #{$top-navigation-height});
+  margin-top: $top-navigation-height;
+
+  @media (min-width: 768px) {
+    margin-left: $sidebar-width;
+    width: calc(100% - #{$sidebar-width});
+  }
+}
+
+.full-width {
+  width: 100%;
+  display: block;
+}

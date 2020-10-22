@@ -1,0 +1,38 @@
+<%= field_set_tag do %>
+  <%= f.input :css_id, label: 'CSS ID' %>
+  <%= f.input :css_class, label: 'CSS class' %>
+  <%= f.input :background_image,
+              hint: f.object.background_image.attachment.present? ? "Current image:<br />#{image_tag(image_url_for(f.object.background_image, quality: 40), width: 300, class: 'cropper')}".html_safe : "" %>
+  <%= f.input :remove_background_image, as: :boolean if f.object.background_image.attachment.present? %>
+  <%= f.input :foreground_image,
+              hint: f.object.foreground_image.attachment.present? ? "Current image:<br />#{image_tag(image_url_for(f.object.foreground_image, w: 300))}".html_safe : "" %>
+  <%= f.input :remove_foreground_image, as: :boolean if f.object.foreground_image.attachment.present? %>
+
+  <%= f.input :position %>
+  <%= f.input :url, hint: 'Enter a URL here to make the item clickable.  use full domain (including https) for external resources.' %>
+
+  <%= f.input :background_image_crop, as: :hidden %>
+<%- end %>
+
+<script>
+  $(function() {
+    $('img.cropper').cropper({
+      aspectRatio: 28 / 11,
+      scalable: false,
+      movable: false,
+      zoomable: false,
+      <%- unless f.object.background_crop.blank? %>
+      data: {
+        width: <%= f.object.background_crop[:width] %>,
+        height: <%= f.object.background_crop[:height] %>,
+        x: <%= f.object.background_crop[:x] %>,
+        y: <%= f.object.background_crop[:y] %>
+      },
+      <%- end %>
+      crop: function(event) {
+        console.log(event.detail);
+        $('#content_item_background_image_crop').val('{ "width": ' +Math.round(event.detail.width)+ ', "height": '+Math.round(event.detail.height)+', "x": '+Math.round(event.detail.x)+', "y": '+Math.round(event.detail.y)+' }');
+      }
+    });
+  })
+</script>

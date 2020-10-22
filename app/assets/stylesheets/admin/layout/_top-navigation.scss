@@ -1,0 +1,25 @@
+.top-navigation {
+  height: $top-navigation-height;
+  background-color: $color-primary-0;
+  border-bottom: 2px solid $color-primary-6;
+
+  a {
+    color: $white;
+
+    &:hover {
+      color: $off-white;
+    }
+  }
+
+  .navbar-brand {
+    @extend %font-lobster;
+
+    font-size: 1.5rem;
+
+    span {
+      @extend %font-default;
+
+      font-size: 1rem;
+    }
+  }
+}

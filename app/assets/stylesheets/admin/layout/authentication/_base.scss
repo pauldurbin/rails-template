@@ -1,0 +1,54 @@
+body {
+  background-color: $color-primary-1;
+}
+
+.card {
+  margin-top: 2em;
+  background-color: $white;
+
+  .card-header {
+    @extend %font-lobster;
+
+    color: $white;
+    font-size: 1.5rem;
+    background-color: $color-primary-0;
+  }
+
+  .card-body {
+    p {
+      font-size: 0.9em;
+      text-transform: uppercase;
+    }
+    label {
+      font-size: 0.9em;
+    }
+  }
+
+  .card-footer {
+    font-size: 0.8em;
+    text-align: center;
+
+    a {
+      margin: 0 0.5rem;
+      color: $color-primary-4;
+    }
+  }
+}
+
+#error_explanation {
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+  background: $white;
+  padding: 2em 0;
+
+  h2 {
+    font-size: 1.25em;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+}

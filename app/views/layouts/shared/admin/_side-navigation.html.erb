@@ -1,0 +1,68 @@
+<nav class="sidebar">
+  <ul>
+    <li class="<%= current_page?(admin_root_path) ? "active" : '' %>">
+      <%= link_to admin_root_path do %>
+        <i class="fa fa-home" aria-hidden="true"></i> <span>Dashboard</span>
+      <%- end %>
+    </li>
+
+    <li class="<%= params[:controller] == 'admin/pages' ? "active" : '' %>">
+      <%= link_to admin_pages_path do %>
+        <i class="fa fa-file-text" aria-hidden="true"></i> <span>Pages</span>
+      <%- end %>
+    </li>
+    <li class="<%= params[:controller] == 'admin/news_items' ? "active" : '' %>">
+      <%= link_to admin_news_items_path do %>
+        <i class="fa fa-newspaper-o" aria-hidden="true"></i> News items
+      <%- end %>
+    </li>
+    <li class="<%= params[:controller] == 'admin/historical_events' ? "active" : '' %>">
+      <%= link_to admin_historical_events_path do %>
+        <i class="fa fa-calendar" aria-hidden="true"></i> Historical events
+      <%- end %>
+    </li>
+    <li class="<%= params[:controller] == 'admin/awards' ? "active" : '' %>">
+      <%= link_to admin_awards_path do %>
+        <i class="fa fa-trophy" aria-hidden="true"></i> Awards
+      <%- end %>
+    </li>
+    <li class="<%= params[:controller] == 'admin/award_winners' ? "active" : '' %>">
+      <%= link_to admin_award_winners_path do %>
+        <i class="fa fa-handshake-o" aria-hidden="true"></i> Winners
+      <%- end %>
+    </li>
+    <li class="<%= params[:controller] == 'admin/meetings' ? "active" : '' %>">
+      <%= link_to admin_meetings_path do %>
+        <i class="fa fa-bullhorn" aria-hidden="true"></i> Meetings
+      <%- end %>
+    </li>
+
+    <li class="nav-heading">Admin</li>
+    <%- if current_user.deity? %>
+    <li class="<%= params[:controller] == 'admin/sites' ? "active" : '' %>">
+      <%= link_to admin_sites_url do %>
+        <i class="fa fa-server" aria-hidden="true"></i> <span>Sites</span>
+      <%- end %>
+    </li>
+    <%- end %>
+    <li class="<%= params[:controller] == 'admin/users' ? "active" : '' %>">
+      <%= link_to admin_users_url do %>
+        <i class="fa fa-user" aria-hidden="true"></i> <span>Users</span>
+      <%- end %>
+    </li>
+    <li class="<%= params[:controller] == 'admin/templates' ? "active" : '' %>">
+      <%= link_to admin_templates_path do %>
+        <i class="fa fa-file-text-o" aria-hidden="true"></i> Templates
+      <%- end %>
+    </li>
+  </ul>
+
+  <ul class="mt-4">
+    <li class="nav-heading"><%= current_site.name %></li>
+    <li>
+      <%= link_to new_admin_site_selection_url do %>
+        <i class="fa fa-refresh" aria-hidden="true"></i> <span>Switch site</span>
+      <%- end %>
+    </li>
+  </ul>
+</nav>

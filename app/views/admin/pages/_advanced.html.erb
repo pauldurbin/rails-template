@@ -1,0 +1,11 @@
+<%= field_set_tag "Meta information (SEO)" do %>
+  <%= f.input :meta_title %>
+  <%= f.input :meta_description %>
+  <%= f.input :meta_keywords %>
+<%- end %>
+
+<%= field_set_tag "Advanced" do %>
+  <%= f.input :override_url %>
+  <%= f.input :show_in_header %>
+  <%= f.input :show_in_footer %>
+<%- end %>

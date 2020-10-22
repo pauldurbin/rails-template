@@ -1,0 +1,30 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-12'>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="dashboard__feed">
+            <%- shelves.each do |element| %>
+              <div class="dashboard-feed__item">
+                <!-- label-success label-warning label-danger -->
+                <span class="label label-success">
+                  <i class="fa fa-file-text-o"></i>
+                </span>
+                <%= element.page.menu_title %> - <strong><%= element.name %></strong> 
+                <small>
+                  <%= link_to new_admin_page_shelf_path(id: element.id, page_id: params[:page_id]),
+                              data: {
+                                remote: true,
+                                confirm: 'This will create a duplicate, are you sure?'
+                              } do %>
+                    Clone
+                  <%- end %>
+                </small>
+              </div>
+            <%- end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
