@@ -21,10 +21,10 @@ remove_file "config/secrets.yml"
 copy_file "config/sidekiq.yml"
 
 copy_file "config/routes.rb", force: true
-copy_file "config/ancestry.rb"
-copy_file "config/devise.rb"
 copy_file "config/webpacker.yml"
 
+copy_file "config/initializers/ancestry.rb"
+copy_file "config/initializers/devise.rb"
 copy_file "config/initializers/generators.rb"
 copy_file "config/initializers/new_google_recaptcha.rb"
 copy_file "config/initializers/rotate_log.rb"
