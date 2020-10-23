@@ -38,6 +38,9 @@ def apply_template!
   empty_directory ".git/safe"
 
   run_with_clean_bundler_env "bin/setup"
+
+  uncomment_lines "app/models/user.rb", /devise :database_authenticatable, :recoverable, :rememberable, :validatable, :trackable/
+
   create_initial_migration
   generate_spring_binstubs
 
