@@ -20,7 +20,7 @@ copy_file "config/puma.rb", force: true
 remove_file "config/secrets.yml"
 copy_file "config/sidekiq.yml"
 
-copy_file "config/routes.rb"
+copy_file "config/routes.rb", force: true
 copy_file "config/webpacker.yml"
 
 copy_file "config/initializers/generators.rb"
