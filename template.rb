@@ -39,8 +39,6 @@ def apply_template!
 
   run_with_clean_bundler_env "bin/setup"
 
-  uncomment_lines "app/models/user.rb", /devise :database_authenticatable, :recoverable, :rememberable, :validatable, :trackable/
-
   create_initial_migration
   generate_spring_binstubs
 
@@ -49,6 +47,9 @@ def apply_template!
     terminal-notifier
   ]
   run_with_clean_bundler_env "bundle binstubs #{binstubs.join(' ')} --force"
+
+  run_with_clean_bundler_env "rails generate devise:install"
+  run_with_clean_bundler_env "rails generate devise User"
 
   template "rubocop.yml.tt", ".rubocop.yml"
   run_rubocop_autocorrections
