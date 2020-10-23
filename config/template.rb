@@ -20,9 +20,8 @@ copy_file "config/puma.rb", force: true
 remove_file "config/secrets.yml"
 copy_file "config/sidekiq.yml"
 
-gsub_file "config/routes.rb", /  # root 'welcome#index'/ do
-  '  root "home#index"'
-end
+copy_file "config/routes.rb"
+copy_file "config/webpacker.yml"
 
 copy_file "config/initializers/generators.rb"
 copy_file "config/initializers/new_google_recaptcha.rb"
@@ -37,9 +36,10 @@ gsub_file "config/initializers/filter_parameter_logging.rb", /\[:password\]/ do
   "%w[password secret session cookie csrf]"
 end
 
-file "config/initializers/assets.rb", <<-CODE
-  Rails.application.config.assets.precompile += %w( admin.js admin.css authentication.css pdf.css )
-CODE
+gsub_file "config/initializers/assets.rb", /# folder are already added./ do
+  "# folder are already added."
+  "Rails.application.config.assets.precompile += %w( admin.js admin.css authentication.css pdf.css )"
+end
 
 apply "config/environments/development.rb"
 apply "config/environments/production.rb"

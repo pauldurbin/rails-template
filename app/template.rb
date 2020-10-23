@@ -1,4 +1,4 @@
-copy_file "app/assets/javascripts/application.js"
+copy_file "app/assets/javascripts/application.js", force: true
 copy_file "app/assets/javascripts/admin.js"
 
 copy_file "app/assets/stylesheets/application.scss"
