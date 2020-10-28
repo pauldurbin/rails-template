@@ -65,7 +65,7 @@ def copy(example_path)
   return if File.exist?(copy_path)
 
   log(:magenta, "copy #{example_path} → #{copy_path}") do
-    FileUtils.cp(example_path, copy_path)
+    FileUtils.cp_r(example_path, copy_path)
   end
 end
 
