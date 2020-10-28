@@ -70,9 +70,19 @@ def copy(example_path)
 end
 
 def directory(dir_path)
+  create_directory(dir_path) unless directory_exists?(dir_path)
+
   log(:magenta, "directory #{dir_path} → #{dir_path}") do
     FileUtils.copy_entry(dir_path, dir_path)
   end
+end
+
+def create_directory(dir_path)
+  FileUtils.mkdir_p(dir_path)
+end
+
+def directory_exists?(directory)
+  File.directory?(directory)
 end
 
 def test_local_env_contains_required_keys
