@@ -33,6 +33,8 @@ template "config/initializers/sidekiq.rb.tt"
 copy_file "config/initializers/simple_form_bootstrap.rb"
 copy_file "config/initializers/simple_form.rb"
 
+directory "db/migrate"
+
 gsub_file "config/initializers/filter_parameter_logging.rb", /\[:password\]/ do
   "%w[password secret session cookie csrf]"
 end
