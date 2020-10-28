@@ -39,8 +39,6 @@ def apply_template!
 
   run_with_clean_bundler_env "bin/setup"
 
-  run_with_clean_bundler_env "rails generate devise:install"
-
   create_initial_migration
   generate_spring_binstubs
 
