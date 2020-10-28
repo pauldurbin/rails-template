@@ -19,8 +19,6 @@ remove_file "config/database.yml"
 copy_file "config/puma.rb", force: true
 remove_file "config/secrets.yml"
 copy_file "config/sidekiq.yml"
-
-copy_file "config/routes.rb", force: true
 copy_file "config/webpacker.yml"
 
 copy_file "config/initializers/ancestry.rb"
@@ -32,8 +30,6 @@ copy_file "config/initializers/version.rb"
 template "config/initializers/sidekiq.rb.tt"
 copy_file "config/initializers/simple_form_bootstrap.rb"
 copy_file "config/initializers/simple_form.rb"
-
-directory "db/migrate"
 
 gsub_file "config/initializers/filter_parameter_logging.rb", /\[:password\]/ do
   "%w[password secret session cookie csrf]"
@@ -48,5 +44,3 @@ apply "config/environments/development.rb"
 apply "config/environments/production.rb"
 apply "config/environments/test.rb"
 template "config/environments/staging.rb.tt"
-
-route %Q(mount Sidekiq::Web => "/sidekiq" # monitoring console\n)
