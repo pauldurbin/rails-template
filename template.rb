@@ -21,9 +21,6 @@ def apply_template!
   copy_file "Guardfile"
   copy_file "Procfile"
 
-  run_with_clean_bundler_env "bin/setup"
-  directory "db/migrate"
-
   apply "Rakefile.rb"
   apply "config.ru.rb"
   apply "app/template.rb"
@@ -40,6 +37,8 @@ def apply_template!
   git :init unless preexisting_git_repo?
   empty_directory ".git/safe"
 
+  run_with_clean_bundler_env "bin/setup"
+  directory "db/migrate"
   run_with_clean_bundler_env "bin/migrate"
 
   copy_file "config/routes.rb", force: true
