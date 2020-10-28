@@ -16,6 +16,10 @@ rescue LoadError
   # If highline is missing, we'll gracefully omit ansi color output
 end
 
+def within_project_root(&block)
+  Dir.chdir(File.expand_path("../..", __FILE__), &block)
+end
+
 def run(command)
   log(:blue, "run  #{command}") do
     shell = "#{command} > /dev/null"
