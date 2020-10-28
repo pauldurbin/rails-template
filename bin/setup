@@ -10,7 +10,7 @@ def setup!
     copy "example.env"
     copy "config/database.example.yml"
     test_local_env_contains_required_keys
-    copy "db/migrate"
+    directory "db/migrate"
     run  "bin/rails generate devise:install"
     run  "bin/rake db:create:all"
     run  "bin/rake db:migrate"
@@ -65,7 +65,13 @@ def copy(example_path)
   return if File.exist?(copy_path)
 
   log(:magenta, "copy #{example_path} → #{copy_path}") do
-    FileUtils.cp_r(example_path, copy_path)
+    FileUtils.cp(example_path, copy_path)
+  end
+end
+
+def directory(dir_path)
+  log(:magenta, "directory #{dir_path} → #{dir_path}") do
+    FileUtils.copy_entry(dir_path, dir_path)
   end
 end
 
