@@ -186,7 +186,6 @@ end
 
 def create_initial_migration
   return if Dir["db/migrate/**/*.rb"].any?
-  directory "db/migrate", "db/migrate"
   run_with_clean_bundler_env "bin/rake db:migrate"
 end
 
