@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+
+def migrate!
+  within_project_root do
+    run  "bin/rake db:create:all"
+    run  "bin/rake db:migrate"
+    run  "bin/rake db:seed"
+  end
+end
+
+
+require "fileutils"
+begin
+  require "highline"
+rescue LoadError
+  # If highline is missing, we'll gracefully omit ansi color output
+end
+
+def run(command)
+  log(:blue, "run  #{command}") do
+    shell = "#{command} > /dev/null"
+    with_clean_bundler_env do
+      system(shell) or die("#{command} exited with non-zero status")
+    end
+  end
+end
+
+def with_clean_bundler_env(&block)
+  return block.call unless defined?(Bundler)
+  Bundler.with_clean_env(&block)
+end
+
+def log(color, message, out=$stdout, &block)
+  if defined?(HighLine::String)
+    message.sub!(/^(\S*)/) { HighLine::String.new($1).public_send(color) }
+  end
+
+  if block_given?
+    out.print("#{message}… ")
+    yield
+    log(:green, "✔︎")
+  else
+    out.puts(message)
+  end
+end
+
+def die(message)
+  puts
+  log(:red, "FAIL #{message}", $stderr)
+  exit(1)
+end
+
+migrate!
