@@ -39,7 +39,7 @@ def apply_template!
 
   run_with_clean_bundler_env "bin/setup"
   directory "db/migrate"
-  run_with_clean_bundler_env "bin/migrate"
+  run_with_clean_bundler_env "bin/run_migrations"
 
   copy_file "config/routes.rb", force: true
   route %Q(mount Sidekiq::Web => "/sidekiq" # monitoring console\n)
